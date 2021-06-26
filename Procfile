@@ -1,1 +1,1 @@
-web: gunicorn chedBackend.wsgi:application --log-file
+web: gunicorn chedBackend.wsgi:application --log-file -
