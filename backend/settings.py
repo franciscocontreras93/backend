@@ -10,6 +10,7 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/3.2/ref/settings/
 """
 
+import dj_database_url
 from pathlib import Path
 import os
 
@@ -39,8 +40,8 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/3.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-# SECRET_KEY = 'django-insecure-jbp$z6xy+-_zuuh1=004$lgtyuv838j%w^jl%3vclvm2ic34f)'
-SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY', 'django-insecure-jbp$z6xy+-_zuuh1=004$lgtyuv838j%w^jl%3vclvm2ic34f)')
+SECRET_KEY = 'django-insecure-jbp$z6xy+-_zuuh1=004$lgtyuv838j%w^jl%3vclvm2ic34f)'
+# SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY', 'django-insecure-jbp$z6xy+-_zuuh1=004$lgtyuv838j%w^jl%3vclvm2ic34f)')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
@@ -160,4 +161,9 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 #CORS CONFIG ALLOW ALL PETITIONS 
 
 CORS_ORIGIN_ALLOW_ALL = True
+
+# Heroku: Update database configuration from $DATABASE_URL.
+db_from_env = dj_database_url.config(
+    'postgres://roiersfrzumcay:f24f6e05074df2abd8ce2e140d61dac752662cb6bf3157ecae584e10810bd392@ec2-52-45-179-101.compute-1.amazonaws.com:5432/d2gepvgvthaf5i', conn_max_age=500)
+DATABASES['default'].update(db_from_env)
 
