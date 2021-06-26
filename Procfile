@@ -1,1 +1,1 @@
-web: gunicorn chedBackend.wsgi:application --log-file
+web : gunicorn --bind 0.0.0.0:$PORT hello:chedBackend.wsgi:application
