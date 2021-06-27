@@ -13,7 +13,8 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 import dj_database_url
 from pathlib import Path
 import os
-
+# TODO: THIS LINES ARE DISABLE FOR PRODUCTION, IN DEVELOPMENT UNCOMMENT 
+# 
 # if os.name == 'nt':
 #     import platform
 #     OSGEO4W = r"C:\\OSGeo4W"
